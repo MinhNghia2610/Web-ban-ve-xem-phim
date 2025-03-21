@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản Lý Vé - Admin</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #0a0a0a;
+            color: #fff;
+        }
+
+        .container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            width: 250px;
+            background: #1a1a1a;
+            padding: 20px;
+            height: 100vh;
+            position: fixed;
+        }
+
+        .sidebar h2 {
+            text-align: center;
+            color: #e50914;
+        }
+
+        .sidebar ul {
+            list-style: none;
+        }
+
+        .sidebar ul li {
+            margin: 15px 0;
+        }
+
+        .sidebar ul li a {
+            text-decoration: none;
+            color: white;
+            display: block;
+            padding: 10px;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .sidebar ul li a:hover {
+            background: #e50914;
+        }
+
+        .dashboard {
+            margin-left: 250px;
+            flex-grow: 1;
+            padding: 20px;
+            background: #121212;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        .ticket-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #1a1a1a;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(229, 9, 20, 0.5);
+        }
+
+        .ticket-table th, .ticket-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #333;
+        }
+
+        .ticket-table th {
+            background: #e50914;
+        }
+
+        .action-buttons button {
+            background: #e50914;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 5px;
+            transition: 0.3s;
+        }
+
+        .action-buttons button:hover {
+            background: #ff1a1a;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <h2>Admin Panel</h2>
+            <ul>
+                <li><a href="trangchu.html">Dashboard</a></li>
+                <li><a href="qlyphim.html">Quản lý phim</a></li>
+                <li><a href="themphim.html">Thêm phim</a></li>
+            </ul>
+        </aside>
+        <main class="dashboard">
+            <h1>Quản Lý Vé</h1>
+            <table class="ticket-table">
+                <thead>
+                    <tr>
+                        <th>ID Vé</th>
+                        <th>Tên Phim</th>
+                        <th>Khách Hàng</th>
+                        <th>Ngày Chiếu</th>
+                        <th>Hành động</th>
+                    </tr>
+                </thead>
+                <tbody id="ticketList">
+                    <!-- Danh sách vé sẽ được load ở đây -->
+                </tbody>
+            </table>
+        </main>
+    </div>
+
+    <script>
+        const tickets = [
+            { id: "A123", movie: "Dune 2", customer: "Nguyễn Văn A", date: "2025-03-15" },
+            { id: "B456", movie: "Godzilla x Kong", customer: "Trần Thị B", date: "2025-04-10" },
+            { id: "C789", movie: "Deadpool & Wolverine", customer: "Lê Văn C", date: "2025-05-20" }
+        ];
+
+        function loadTickets() {
+            const ticketList = document.getElementById("ticketList");
+            ticketList.innerHTML = "";
+            tickets.forEach((ticket, index) => {
+                const row = document.createElement("tr");
+                row.innerHTML = `
+                    <td>${ticket.id}</td>
+                    <td>${ticket.movie}</td>
+                    <td>${ticket.customer}</td>
+                    <td>${ticket.date}</td>
+                    <td class="action-buttons">
+                        <button onclick="deleteTicket(${index})">Hủy vé</button>
+                    </td>
+                `;
+                ticketList.appendChild(row);
+            });
+        }
+
+        function deleteTicket(index) {
+            if (confirm("Bạn có chắc muốn hủy vé này?")) {
+                tickets.splice(index, 1);
+                loadTickets();
+            }
+        }
+
+        window.onload = loadTickets;
+    </script>
+</body>
+</html>

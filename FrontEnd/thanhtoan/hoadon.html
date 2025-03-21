@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hóa đơn</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="bill-container">
+        <div class="bill-header">
+            <h1>Hóa đơn thanh toán</h1>
+            <p>Ngày: <span id="current-date"></span></p>
+            <p>Mã hóa đơn: <span id="bill-id"></span></p>
+        </div>
+        <div class="customer-info">
+            <h2>Thông tin khách hàng</h2>
+            <p>Họ và tên: <span id="customer-name"></span></p>
+            <p>Email: <span id="customer-email"></span></p>
+            <p>Số điện thoại: <span id="customer-phone"></span></p>
+        </div>
+
+        <div class="bill-details">
+            <h2>Chi tiết hóa đơn</h2>
+            <div class="bill-item">
+                <span>Vé xem phim</span>
+                <span id="ticket-price">0 VNĐ</span>
+            </div>
+            <div class="bill-item">
+                <span>Dịch vụ</span>
+                <span id="service-price">0 VNĐ</span>
+            </div>
+            <div class="bill-total">
+                <span>Tổng cộng:</span>
+                <span id="total-price">0 VNĐ</span>
+            </div>
+        </div>
+
+        <div class="payment-info">
+            <h2>Thông tin thanh toán</h2>
+            <p>Phương thức thanh toán: <span id="payment-method"></span></p>
+            <p>Trạng thái: <span class="payment-status">Đã thanh toán</span></p>
+        </div>
+
+        <div class="bill-footer">
+            <p>Cảm ơn quý khách đã sử dụng dịch vụ!</p>
+            <button onclick="window.print()" class="print-btn">In hóa đơn</button>
+            <button onclick="goToHome()" class="home-btn">Về trang chủ</button>
+        </div>
+    </div>
+
+    <script>
+        window.onload = function () {
+             // Lấy thông tin khách hàng từ localStorage
+            const customerName = localStorage.getItem('customerName') || "Chưa cập nhật";
+            const customerEmail = localStorage.getItem('customerEmail') || "Chưa cập nhật";
+            const customerPhone = localStorage.getItem('customerPhone') || "Chưa cập nhật";
+
+            // Hiển thị thông tin khách hàng trên hóa đơn
+            document.getElementById('customer-name').textContent = customerName;
+            document.getElementById('customer-email').textContent = customerEmail;
+            document.getElementById('customer-phone').textContent = customerPhone;
+            // Lấy thông tin từ localStorage
+            let bookingInfo = JSON.parse(localStorage.getItem('bookingInfo')) || { ticketPrice: 0, totalPrice: 0, servicePrice: 0 };
+
+            // Kiểm tra dữ liệu trong console
+            console.log("Booking Info on Invoice Page:", bookingInfo);
+
+            // Hiển thị dữ liệu trên hóa đơn
+            document.getElementById('ticket-price').textContent = bookingInfo.ticketPrice.toLocaleString() + ' VNĐ';
+            document.getElementById('service-price').textContent = bookingInfo.servicePrice.toLocaleString() + ' VNĐ';
+            document.getElementById('total-price').textContent = bookingInfo.totalPrice.toLocaleString() + ' VNĐ';
+            
+            const paymentMethod = localStorage.getItem('paymentMethod') || "Không xác định";
+            document.getElementById('payment-method').textContent = paymentMethod;
+        };
+    </script>
+    <script>
+        function goToHome() {
+            localStorage.removeItem('bookingInfo'); // Xóa thông tin đặt vé
+            window.location.href = 'index.html'; // Chuyển hướng về trang chủ
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,117 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #0a0a0a;
+    color: #fff;
+}
+
+.login-container {
+    background-color: #1a1a1a;
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(229, 9, 20, 0.2);
+    width: 100%;
+    max-width: 400px;
+    transform: translateY(0);
+    transition: all 0.3s ease;
+    animation: fadeIn 0.8s ease backwards;
+}
+
+.login-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(229, 9, 20, 0.3);
+}
+
+.login-title {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #e50914;
+    font-size: 2.2rem;
+    font-weight: 600;
+    animation: fadeIn 1s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #fff;
+    transform: translateX(0);
+    transition: transform 0.3s ease;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.8rem;
+    border: 2px solid #333;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background: #1a1a1a;
+    color: #fff;
+    box-sizing: border-box;
+}
+
+.form-group input:focus {
+    border-color: #e50914;
+    box-shadow: 0 0 0 3px rgba(229, 9, 20, 0.2);
+    outline: none;
+}
+
+.form-group input:focus + label {
+    transform: translateX(10px);
+}
+
+.login-button {
+    width: 100%;
+    padding: 1rem;
+    background: #e50914;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.login-button:hover {
+    background: #f40612;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(229, 9, 20, 0.4);
+}
+
+.login-button:active {
+    transform: translateY(1px);
+}
+
+.error-message {
+    color: #e50914;
+    font-size: 0.875rem;
+    margin-top: 0.5rem;
+    display: none;
+    animation: shake 0.5s ease;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    75% { transform: translateX(10px); }
+}

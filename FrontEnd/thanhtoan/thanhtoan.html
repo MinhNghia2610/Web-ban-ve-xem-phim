@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thanh Toán</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="payment-container">
+        <h1>Thanh Toán</h1>
+        
+        <div class="order-summary">
+            <h2>Thông tin đơn hàng</h2>
+            <div class="order-item">
+                <span>Vé xem phim</span>
+                <span id="ticket-price">0 VNĐ</span>
+            </div>
+            <div class="order-item">
+                <span>Dịch vụ</span>
+                <span id="service-price">0 VNĐ</span>
+            </div>
+            <div class="total">
+                Tổng cộng: <span id="total-price">0 VNĐ</span>
+            </div>
+        </div>
+
+        <form class="payment-form">
+            <div class="form-group">
+                <label for="name">Họ và tên</label>
+                <input type="text" id="name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Số điện thoại</label>
+                <input type="tel" id="phone" required>
+            </div>
+
+            <h3>Phương thức thanh toán</h3>
+            <div class="payment-methods">
+                <div class="payment-method" data-method="credit" onclick="selectPayment(this)">
+                    <h4>Thẻ tín dụng/ghi nợ</h4>
+                    <p>Visa, Mastercard, JCB</p>
+                </div>
+                <div class="payment-method" data-method="ewallet" onclick="selectPayment(this)">
+                    <h4>Ví điện tử</h4>
+                    <p>Momo, ZaloPay, VNPay</p>
+                </div>
+                <div class="payment-method" data-method="bank" onclick="selectPayment(this)">
+                    <h4>Chuyển khoản ngân hàng</h4>
+                    <p>Internet Banking</p>
+                </div>
+            </div>
+
+            <button type="submit" class="submit-btn">Xác nhận thanh toán</button>
+            
+        </form>
+    </div>
+
+    <script src="thanhtoan.js"></script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đặt vé xem phim</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="booking-section">
+        <h1>Đặt vé xem phim</h1>
+        
+        <h2>Chọn ghế</h2>
+        <div class="seat-container" id="seats">
+            <!-- Ghế sẽ được tạo bằng JavaScript -->
+        </div>
+
+        <h2>Chọn khuyến mãi</h2>
+        <select id="promotion">
+            <option value="0">Không có khuyến mãi</option>
+            <option value="10">Giảm 10% - Sinh viên</option>
+            <option value="15">Giảm 15% - Thành viên</option>
+            <option value="20">Giảm 20% - VIP</option>
+        </select>
+
+        <div>
+            <h3>Tổng tiền: <span id="total-price">0</span> VND</h3>
+            <button id="book-ticket-btn">
+                <a href="dichvu.html">Tiếp theo</a>
+            </button>
+        </div>
+    </div>
+
+    <script src="datve.js"></script>
+</body>
+</html>

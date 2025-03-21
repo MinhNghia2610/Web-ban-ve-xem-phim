@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dịch Vụ Rạp Chiếu Phim</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="services-container">
+        <h1>Dịch Vụ Tại Rạp</h1>
+
+        <div class="service-section">
+            <div class="service-cards">
+                <div class="service-card">
+                    <img src="../../img/popcorn.jpg" alt="Bắp rang">
+                    <h3>Bắp Rang Bơ</h3>
+                    <p>Bắp rang bơ thơm ngon, giòn rụm - Món ăn không thể thiếu khi xem phim</p>
+                    <p class="price">45.000 VNĐ</p>
+                    <button class="order-btn" onclick="addToCart('Bắp Rang Bơ', 45000)">Thêm vào giỏ</button>
+                </div>
+
+                <div class="service-card">
+                    <img src="../../img/nachos.jpg" alt="Nachos">
+                    <h3>Nachos & Phô Mai</h3>
+                    <p>Bánh Nachos giòn tan với sốt phô mai béo ngậy</p>
+                    <p class="price">55.000 VNĐ</p>
+                    <button class="order-btn" onclick="addToCart('Nachos & Phô Mai', 55000)">Thêm vào giỏ</button>
+                </div>
+
+                <div class="service-card">
+                    <img src="../../img/nuocngot.jpg" alt="Nước uống">
+                    <h3>Combo Nước Ngọt</h3>
+                    <p>Coca-Cola, Sprite, Fanta - Size L kèm đá</p>
+                    <p class="price">35.000 VNĐ</p>
+                    <button class="order-btn" onclick="addToCart('Combo Nước Ngọt', 35000)">Thêm vào giỏ</button>
+                </div>
+
+                <div class="service-card">
+                    <img src="../../img/combo.jpg" alt="Combo">
+                    <h3>Combo Tiết Kiệm</h3>
+                    <p>1 Bắp lớn + 2 Nước ngọt size L + 1 Snack</p>
+                    <p class="price">99.000 VNĐ</p>
+                    <button class="order-btn" onclick="addToCart('Combo Tiết Kiệm', 99000)">Thêm vào giỏ</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="cart">
+        <h2>Giỏ Hàng</h2>
+        <div class="cart-items" id="cartItems">
+            <!-- Cart items will be added here dynamically -->
+        </div>
+        <div class="cart-total">
+            Tổng cộng: <span id="cartTotal">0 VNĐ</span>
+        </div>
+        <button class="checkout-btn" onclick="checkout()">
+            <a href="thanhtoan.html">Thanh toán</a>
+        </button>
+    </div>
+
+    <script src="dichvu.js"></script>
+</body>
+</html>

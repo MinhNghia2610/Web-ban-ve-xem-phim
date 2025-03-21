@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Bill</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family:'Times New Roman', Times, serif;
+            line-height: 1.6;
+            padding: 20px;
+            background-color: #40e5eb;
+        }
+
+        .bill-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgb(177, 141, 223);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        input[type="text"],
+        input[type="date"],
+        input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+
+        .item-entry {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr auto;
+            gap: 10px;
+            margin-bottom: 10px;
+            align-items: center;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        button[type="button"] {
+            background-color: #f44336;
+        }
+
+        button[type="button"]:hover {
+            background-color: #da190b;
+        }
+
+        #totalAmount {
+            background-color: #f8f8f8;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="bill-container">
+        <h1>Hóa Đơn</h1>
+        <form action="../thanhtoan.html" method="POST" id="billForm">
+            <div class="form-group">
+                <label for="tenKhachHang">Tên Khách Hàng :</label>
+                <input type="text" id="tenKhachHang" name="tenKhachHang" required>
+            </div>
+
+            <div class="form-group">
+                <label for="BillDate">Ngày Mua :</label>
+                <input type="date" id="BillDate" name="BillDate" required>
+            </div>
+
+            <div class="form-group">
+                <label for="items">Mặt Hàng:</label>
+                <div id="itemsList">
+                    <div class="item-entry">
+                        <input type="text" name="mặt hàng []" placeholder="Mặt Hàng " required>
+                        <input type="number" name="số lượng []" placeholder="Số lượng " required>
+                        <input type="number" name="Giá []" placeholder="Giá " required>
+                    </div>
+                </div>
+                <button type="button" onclick="addItem()">Thêm Mặt Hàng </button>
+            </div>
+
+            <div class="form-group">
+                <label for="totalAmount">Tổng Hóa Đơn :</label>
+                <input type="number" id="totalAmount" name="totalAmount" readonly>
+            </div>
+
+            <div class="form-group">
+                <button type="submit">Thực Hiện Thanh Toán</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        let drinkChecked = document.getElementById('drink').checked;
+            let discountCode = document.getElementById('discountCode').value;
+            let paymentMethod = document.getElementById('paymentMethod').value;
+
+            let total = (adultCount * adultPrice) + (childCount * childPrice);
+            if (popcornChecked) total += popcornPrice;
+            if (drinkChecked) total += drinkPrice;
+
+            // Kiểm tra mã giảm giá
+            let discounts = {
+                "GIAM10": 10000,
+                "GIAM20": 20000,
+            };
+            
+            if (discounts[discountCode]) {
+                total -= discounts[discountCode];
+            }
+
+            document.getElementById('totalPrice').innerText = total.toLocaleString();
+            document.getElementById('selectedPayment').innerText = paymentMethod === "cash" ? "Tiền mặt" : paymentMethod === "bank" ? "Chuyển khoản ngân hàng" : "MoMo";
+            
+            // Hóa đơn khách hàng
+            let invoiceText = `
+                Vé Người lớn: ${adultCount} x 100,000 VND<br>
+                Vé Trẻ em: ${childCount} x 70,000 VND<br>
+                ${popcornChecked ? "Bỏng ngô: 50,000 VND<br>" : ""}
+                ${drinkChecked ? "Nước uống: 30,000 VND<br>" : ""}
+                Mã giảm giá: ${discountCode ? discountCode + " (-" + (discounts[discountCode] || 0).toLocaleString() + " VND)" : "Không áp dụng"}<br>
+                Tổng tiền: <strong>${total.toLocaleString()} VND</strong><br>
+                Phương thức thanh toán: <strong>${document.getElementById('selectedPayment').innerText}</strong>
+            `;
+
+            // Hóa đơn cho Admin
+            let adminInvoiceText = `
+                <strong>Chi tiết hóa đơn:</strong><br>
+                Người lớn: ${adultCount} vé<br>
+                Trẻ em: ${childCount} vé<br>
+                ${popcornChecked ? "Bỏng ngô: Có<br>" : "Bỏng ngô: Không<br>"}
+                ${drinkChecked ? "Nước uống: Có<br>" : "Nước uống: Không<br>"}
+                Mã giảm giá: ${discountCode ? discountCode : "Không áp dụng"}<br>
+                Tổng tiền: ${total.toLocaleString()} VND<br>
+                Thanh toán qua: ${document.getElementById('selectedPayment').innerText}<br>
+                Ngày giờ: ${new Date().toLocaleString()}
+            `;
+
+            document.getElementById("invoiceDetails").innerHTML = invoiceText;
+            document.getElementById("invoice").style.display = "block";
+
+            document.getElementById("adminInvoiceDetails").innerHTML = adminInvoiceText;
+            document.getElementById("adminInvoice").style.display = "block";
+    </script>
+</body>
+</html>

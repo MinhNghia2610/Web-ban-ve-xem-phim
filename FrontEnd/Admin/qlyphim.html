@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản Lý Phim - Admin</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #0a0a0a;
+            color: #fff;
+        }
+
+        .container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            width: 250px;
+            background: #1a1a1a;
+            padding: 20px;
+            height: 100vh;
+            position: fixed;
+        }
+
+        .sidebar h2 {
+            text-align: center;
+            color: #e50914;
+        }
+
+        .sidebar ul {
+            list-style: none;
+        }
+
+        .sidebar ul li {
+            margin: 15px 0;
+        }
+
+        .sidebar ul li a {
+            text-decoration: none;
+            color: white;
+            display: block;
+            padding: 10px;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .sidebar ul li a:hover {
+            background: #e50914;
+        }
+
+        .dashboard {
+            margin-left: 250px;
+            flex-grow: 1;
+            padding: 20px;
+            background: #121212;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        .movie-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #1a1a1a;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(229, 9, 20, 0.5);
+        }
+
+        .movie-table th, .movie-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #333;
+        }
+
+        .movie-table th {
+            background: #e50914;
+        }
+
+        .action-buttons button {
+            background: #e50914;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 5px;
+            transition: 0.3s;
+        }
+
+        .action-buttons button:hover {
+            background: #ff1a1a;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <h2>Admin Panel</h2>
+            <ul>
+                <li><a href="index.html">Dashboard</a></li>
+                <li><a href="themphim.html">Thêm phim</a></li>
+                <li><a href="qlyve.html">Quản lý vé</a></li>
+            </ul>
+        </aside>
+        <main class="dashboard">
+            <h1>Quản Lý Phim</h1>
+            <table class="movie-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Tên phim</th>
+                        <th>Ngày khởi chiếu</th>
+                        <th>Hành động</th>
+                    </tr>
+                </thead>
+                <tbody id="movieList">
+                    <!-- Danh sách phim sẽ được load ở đây -->
+                </tbody>
+            </table>
+        </main>
+    </div>
+
+    <script>
+        const movies = [
+            { id: 1, name: "Dune 2", date: "2025-03-15" },
+            { id: 2, name: "Godzilla x Kong", date: "2025-04-10" },
+            { id: 3, name: "Deadpool & Wolverine", date: "2025-05-20" }
+        ];
+
+        function loadMovies() {
+            const movieList = document.getElementById("movieList");
+            movieList.innerHTML = "";
+            movies.forEach((movie, index) => {
+                const row = document.createElement("tr");
+                row.innerHTML = `
+                    <td>${movie.id}</td>
+                    <td>${movie.name}</td>
+                    <td>${movie.date}</td>
+                    <td class="action-buttons">
+                        <button onclick="editMovie(${index})">Sửa</button>
+                        <button onclick="deleteMovie(${index})">Xóa</button>
+                    </td>
+                `;
+                movieList.appendChild(row);
+            });
+        }
+
+        function deleteMovie(index) {
+            if (confirm("Bạn có chắc muốn xóa phim này?")) {
+                movies.splice(index, 1);
+                loadMovies();
+            }
+        }
+
+        function editMovie(index) {
+            const newName = prompt("Nhập tên phim mới:", movies[index].name);
+            if (newName) {
+                movies[index].name = newName;
+                loadMovies();
+            }
+        }
+
+        window.onload = loadMovies;
+    </script>
+</body>
+</html>

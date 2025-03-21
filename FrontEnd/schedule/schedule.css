@@ -1,0 +1,68 @@
+/* Định dạng tổng thể của bảng lịch trình */
+.schedule-container {
+    width: 90%;
+    max-width: 800px;
+    margin: 20px auto;
+    font-family: Arial, sans-serif;
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Tiêu đề bảng */
+.schedule-header {
+    background-color: #007bff;
+    color: white;
+    text-align: center;
+    font-size: 1.5em;
+    padding: 10px;
+}
+
+/* Định dạng bảng */
+.schedule-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.schedule-table th, .schedule-table td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+.schedule-table th {
+    background-color: #0056b3;
+    color: white;
+}
+
+/* Định dạng từng hàng */
+.schedule-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* Hiệu ứng hover */
+.schedule-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Định dạng các ô hiển thị thời gian */
+.time-slot {
+    font-weight: bold;
+    color: #333;
+}
+
+/* Căn chỉnh lịch trình theo cột */
+.schedule-day {
+    font-weight: bold;
+    color: #007bff;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .schedule-table th, .schedule-table td {
+        padding: 8px;
+        font-size: 0.9em;
+    }
+}

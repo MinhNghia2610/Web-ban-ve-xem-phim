@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thêm Phim - Admin</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #0a0a0a;
+            color: #fff;
+        }
+
+        .container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            width: 250px;
+            background: #1a1a1a;
+            padding: 20px;
+            height: 100vh;
+            position: fixed;
+        }
+
+        .sidebar h2 {
+            text-align: center;
+            color: #e50914;
+        }
+
+        .sidebar ul {
+            list-style: none;
+        }
+
+        .sidebar ul li {
+            margin: 15px 0;
+        }
+
+        .sidebar ul li a {
+            text-decoration: none;
+            color: white;
+            display: block;
+            padding: 10px;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .sidebar ul li a:hover {
+            background: #e50914;
+        }
+
+        .dashboard {
+            margin-left: 250px;
+            flex-grow: 1;
+            padding: 20px;
+            background: #121212;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        .form-container {
+            background: #1a1a1a;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(229, 9, 20, 0.5);
+            width: 50%;
+            margin: auto;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        button {
+            background: #e50914;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #ff1a1a;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <h2>Admin Panel</h2>
+            <ul>
+                <li><a href="trangchu.html">Dashboard</a></li>
+                <li><a href="qlyphim.html">Quản lý phim</a></li>
+                <li><a href="qlyve.html">Quản lý vé</a></li>
+            </ul>
+        </aside>
+        <main class="dashboard">
+            <h1>Thêm Phim</h1>
+            <div class="form-container">
+                <form id="addMovieForm">
+                    <div class="form-group">
+                        <label for="movieName">Tên phim:</label>
+                        <input type="text" id="movieName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="movieDesc">Mô tả:</label>
+                        <textarea id="movieDesc" rows="4" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="releaseDate">Ngày khởi chiếu:</label>
+                        <input type="date" id="releaseDate" required>
+                    </div>
+                    <button type="submit">Thêm phim</button>
+                </form>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        document.getElementById('addMovieForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            alert('Phim đã được thêm thành công!');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
