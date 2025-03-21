@@ -4,28 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Schedule</title>
-    <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="schedule.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    
 </head>
 <body>
-    <!-- Header Section -->
-    <header>
-        <div class="logo">
-            <img src="../images/logo.png" alt="Logo">
+    <nav class="navbar">
+        <h1>FilmSpace</h1>
+        <div class="nav-links">
+            <a href="index.html">Trang chủ</a>
+            <a href="../movies/movie.html">Phim</a>
+            <a href="../schedule/schedule.html">Suất Chiếu</a>
+            <a href="#about">Rạp</a>
+            <div class="auth-buttons">
+                <a href="../auth/login.html"><button class="auth-btn login-btn">Đăng Nhập</button></a>
+                <a href="../auth/register.html"><button class="auth-btn register-btn">Đăng Ký</button></a>
+            </div>
         </div>
-        <nav>
-            <ul>
-                <li><a href="../index.html">Home</a></li>
-                <li><a href="../about/about.html">About</a></li>
-                <li><a href="../services/services.html">Services</a></li>
-                <li><a href="schedule.html" class="active">Schedule</a></li>
-                <li><a href="../contact/contact.html">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <!-- Main Content -->
+    </nav>
     <main>
         <section class="schedule-section">
             <h1>Our Schedule</h1>
@@ -57,44 +53,9 @@
                     </div>
                 </div>
             </div>
-            <div class="appointment-section" data-aos="fade-up">
-                <h2>Book an Appointment</h2>
-                <form id="appointmentForm" class="appointment-form">
-                    <div class="form-group">
-                        <input type="text" id="name" placeholder="Your Name" required>
-                        <span class="error-message"></span>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" id="email" placeholder="Your Email" required>
-                        <span class="error-message"></span>
-                    </div>
-                    <div class="form-group">
-                        <input type="tel" id="phone" placeholder="Phone Number" required>
-                        <span class="error-message"></span>
-                    </div>
-                    <div class="form-group">
-                        <input type="date" id="date" required>
-                        <span class="error-message"></span>
-                    </div>
-                    <div class="form-group">
-                        <select id="service" required>
-                            <option value="">Select Service</option>
-                            <option value="service1">Service 1</option>
-                            <option value="service2">Service 2</option>
-                            <option value="service3">Service 3</option>
-                        </select>
-                        <span class="error-message"></span>
-                    </div>
-                    <div class="form-group">
-                        <textarea id="notes" placeholder="Additional Notes"></textarea>
-                    </div>
-                    <button type="submit" class="submit-btn">Book Now</button>
-                </form>
-            </div>
+            
         </section>
     </main>
-
-    <!-- Footer Section -->
     <footer>
         <div class="footer-content">
             <div class="footer-section">
@@ -127,7 +88,6 @@
             <p>&copy; 2023 Your Company Name. All rights reserved.</p>
         </div>
     </footer>
-
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="schedule.js"></script>
 </body>
