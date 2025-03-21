@@ -1,68 +1,246 @@
-/* Định dạng tổng thể của bảng lịch trình */
-.schedule-container {
-    width: 90%;
-    max-width: 800px;
-    margin: 20px auto;
+/* Định dạng chung */
+body {
     font-family: Arial, sans-serif;
-    border-collapse: collapse;
-    background: #fff;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #000000;
+    color:aliceblue;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                url('https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?ixlib=rb-4.0.3');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
-
-/* Tiêu đề bảng */
-.schedule-header {
-    background-color: #007bff;
-    color: white;
-    text-align: center;
-    font-size: 1.5em;
-    padding: 10px;
-}
-
-/* Định dạng bảng */
-.schedule-table {
+.navbar {
+    background-color: #1a1a1a;
+    padding: 1rem 5%;
+    position: fixed;
     width: 100%;
-    border-collapse: collapse;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    animation: slideDown 0.5s ease;
 }
 
-.schedule-table th, .schedule-table td {
-    padding: 12px;
-    text-align: center;
-    border-bottom: 1px solid #ddd;
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
-.schedule-table th {
-    background-color: #0056b3;
+.navbar h1 {
+    color: #e50914;
+    font-size: 2rem;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: all 0.3s;
+    position: relative;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: #e50914;
+    transition: width 0.3s;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.nav-links a:hover {
+    color: #e50914;
+    transform: translateY(-2px);
+}
+
+.login-btn {
+    background: transparent;
+    border: 2px solid #e50914;
+    color: #e50914;
+    position: relative;
+    overflow: hidden;
+}
+
+.login-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: #e50914;
+    transition: left 0.3s;
+    z-index: -1;
+}
+
+.login-btn:hover::before {
+    left: 0;
+}
+
+.login-btn:hover {
     color: white;
 }
-
-/* Định dạng từng hàng */
-.schedule-table tr:nth-child(even) {
-    background-color: #f9f9f9;
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
 }
 
-/* Hiệu ứng hover */
-.schedule-table tr:hover {
-    background-color: #f1f1f1;
+nav ul li {
+    margin: 0 15px;
 }
 
-/* Định dạng các ô hiển thị thời gian */
-.time-slot {
+nav ul li a {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
     font-weight: bold;
-    color: #333;
+    transition: color 0.3s, transform 0.2s;
 }
 
-/* Căn chỉnh lịch trình theo cột */
-.schedule-day {
+nav ul li a:hover,
+nav ul li a.active {
+    color: #ffcc00;
+    transform: scale(1.1);
+}
+
+/* Lịch chiếu */
+.schedule-section {
+    padding: 100px 5%;
+    text-align: center;
+}
+
+.schedule-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.schedule-card {
+    background: rgb(118, 102, 102);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.schedule-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.movie-times {
+    margin-top: 10px;
+}
+
+.time {
+    display: inline-block;
+    background: #ca3939;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin: 5px;
     font-weight: bold;
-    color: #007bff;
+    transition: background-color 0.3s, transform 0.2s;
+    cursor: pointer;
 }
 
-/* Responsive Design */
-@media (max-width: 600px) {
-    .schedule-table th, .schedule-table td {
-        padding: 8px;
-        font-size: 0.9em;
+.time:hover {
+    background: #ffa500;
+    transform: scale(1.1);
+}
+
+.time.disabled {
+    background: #b81b38;
+    cursor: not-allowed;
+}
+.submit-btn:hover {
+    background-color: #218838;
+    transform: scale(1.05);
+}
+
+/* Footer */
+footer {
+    background-color: #222;
+    color: white;
+    padding: 30px 5%;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.footer-section {
+    width: 30%;
+}
+
+.footer-section h3 {
+    border-bottom: 2px solid #ffcc00;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+.social-links {
+    display: flex;
+    gap: 10px;
+}
+
+.social-link {
+    color: white;
+    font-size: 20px;
+    transition: color 0.3s, transform 0.2s;
+}
+
+.social-link:hover {
+    color: #ffcc00;
+    transform: scale(1.2);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .schedule-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-section {
+        width: 100%;
+        margin-bottom: 20px;
     }
 }
