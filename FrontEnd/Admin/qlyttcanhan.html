@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản Lý Thông Tin Cá Nhân</title>
+    <link rel="stylesheet" href="canhan.css">
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <h2>Admin Panel</h2>
+            <ul>
+                <li><a href="trangchu.html">Dashboard</a></li>
+                <li><a href="#" class="active">Thông tin cá nhân</a></li>
+                <li><a href="qlyphim.html">Quản lý phim </a></li>
+                <li><a href="qlyve.html">Quản lý vé</a></li>
+            </ul>
+        </div>
+
+        <!-- Nội dung chính -->
+        <div class="content">
+            <h1>Quản Lý Thông Tin Cá Nhân</h1>
+            <div class="profile-table">
+                <table>
+                    <tr>
+                        <td>Họ và tên:</td>
+                        <td><input type="text" id="fullname" value="Nguyễn Văn A"></td>
+                        <td><button class="edit-btn" onclick="editField('fullname')">Chỉnh sửa</button></td>
+                    </tr>
+                    <tr>
+                        <td>Giới tính:</td>
+                        <td>
+                            <select id="gender">
+                                <option value="male">Nam</option>
+                                <option value="female">Nữ</option>
+                            </select>
+                        </td>
+                        <td><button class="edit-btn" onclick="editField('gender')">Chỉnh sửa</button></td>
+                    </tr>
+                    <tr>
+                        <td>Ngày sinh:</td>
+                        <td><input type="date" id="dob" value="1990-01-01"></td>
+                        <td><button class="edit-btn" onclick="editField('dob')">Chỉnh sửa</button></td>
+                    </tr>
+                    <tr>
+                        <td>Email:</td>
+                        <td><input type="email" id="email" value="admin@example.com"></td>
+                        <td><button class="edit-btn" onclick="editField('email')">Chỉnh sửa</button></td>
+                    </tr>
+                    <tr>
+                        <td>Tên đăng nhập:</td>
+                        <td><input type="text" id="username" value="admin123" disabled></td>
+                    </tr>
+                    <tr>
+                        <td>Mật khẩu:</td>
+                        <td><input type="password" id="password" value=""></td>
+                        <td><button class="edit-btn" onclick="editField('password')">Chỉnh sửa</button></td>
+                    </tr>
+                    <tr>
+                        <td>Số điện thoại:</td>
+                        <td><input type="text" id="phone" value="0123456789"></td>
+                        <td><button class="edit-btn" onclick="editField('phone')">Chỉnh sửa</button></td>
+                    </tr>
+                    <tr>
+                        <td>Vai trò:</td>
+                        <td><input type="text" id="role" value="Super Admin" disabled></td>
+                    </tr>
+                    <tr>
+                        <td>Lịch sử hoạt động:</td>
+                        <td><textarea id="activityLog" disabled>Thêm phim "Dune 2" vào ngày 2025-03-10</textarea></td>
+                    </tr>
+                </table>
+                <button type="submit">Lưu thay đổi</button>
+                   
+            </div>
+        </div>
+    </div>
+
+    <script src="canhan.js"></script>
+</body>
+</html>
