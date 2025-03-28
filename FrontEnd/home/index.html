@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,8 +15,7 @@
             <a href="../schedule/schedule.html">Suất Chiếu</a>
             <a href="../profile/profile.html">Thông tin cá nhân</a>
             <div class="auth-buttons">
-                <a href="../auth/login.html" id="userStatus" onclick="handleLoginClick()">Đăng Nhập</a>
-               
+                <a href="../auth/login.html" id="userStatus">Đăng Nhập</a>
             </div>
         </div>
     </nav>
@@ -32,37 +31,10 @@
     <section class="movies-section">
         <div class="section-header">
             <h2>Đang chiếu</h2>
-            <button class="btn">Xem tất cả</button>
+            <button class="btn" onclick="window.location.href='../movies/movie.html'">Xem tất cả</button>
         </div>
-        <div class="movies-grid">
-            <div class="movie-card" style="animation-delay: 0.1s">
-                <img src="https://via.placeholder.com/300x450" alt="Movie 1">
-                <div class="movie-info">
-                    <h3>Inception</h3>
-                    <p>Action, Sci-Fi | 2h 28min</p>
-                </div>
-            </div>
-            <div class="movie-card" style="animation-delay: 0.2s">
-                <img src="https://via.placeholder.com/300x450" alt="Movie 2">
-                <div class="movie-info">
-                    <h3>The Dark Knight</h3>
-                    <p>Action, Drama | 2h 32min</p>
-                </div>
-            </div>
-            <div class="movie-card" style="animation-delay: 0.3s">
-                <img src="https://via.placeholder.com/300x450" alt="Movie 3">
-                <div class="movie-info">
-                    <h3>Interstellar</h3>
-                    <p>Sci-Fi, Adventure | 2h 49min</p>
-                </div>
-            </div>
-            <div class="movie-card" style="animation-delay: 0.4s">
-                <img src="https://via.placeholder.com/300x450" alt="Movie 4">
-                <div class="movie-info">
-                    <h3>Pulp Fiction</h3>
-                    <p>Crime, Drama | 2h 34min</p>
-                </div>
-            </div>
+        <div class="movies-grid" id="moviesGrid">
+            <!-- Danh sách phim sẽ được tải từ API -->
         </div>
     </section>
 
@@ -75,5 +47,7 @@
             <p>&copy; 2025 FilmSpace. All rights reserved.</p>
         </div>
     </section>
-</body>
-</html>
+    <script src="script.js"></script>
+    </body>
+    </html>
+    

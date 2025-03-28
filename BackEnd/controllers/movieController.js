@@ -32,8 +32,10 @@ exports.createMovie = async (req, res) => {
 exports.getAllMovies = async (req, res) => {
     try {
         const movies = await Movie.find();
+        console.log("📌 Dữ liệu từ MongoDB:", movies);
         res.status(200).json(movies);
     } catch (error) {
+        console.error("❌ Lỗi lấy danh sách phim:", error);
         res.status(500).json({ error: 'Lỗi server' });
     }
 };
