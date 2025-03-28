@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Movie List</title>
+    <title>Danh sách Phim - FilmSpace</title>
     <link rel="stylesheet" href="movie.css">
 </head>
 <body>
@@ -11,26 +11,21 @@
         <h1>FilmSpace</h1>
     </nav>
 
-    <div class="genre-filter">
-        <button class="genre-button active">Toàn bộ</button>
-        <button class="genre-button">Hành động</button>
-        <button class="genre-button">Phiêu lưu</button>
-        <button class="genre-button">Hài hước</button>
-        <button class="genre-button">Kịch tính</button>
-        <button class="genre-button">Kinh dị</button>
-        <button class="genre-button">Lãng mạn</button>
-        <button class="genre-button">Viễn tưởng</button>
+    <div class="genre-filter" id="genreFilter">
+        <button class="genre-button active" data-genre="all">Toàn bộ</button>
+        <button class="genre-button" data-genre="Hành động">Hành động</button>
+        <button class="genre-button" data-genre="Phiêu lưu">Phiêu lưu</button>
+        <button class="genre-button" data-genre="Hài hước">Hài hước</button>
+        <button class="genre-button" data-genre="Kịch tính">Kịch tính</button>
+        <button class="genre-button" data-genre="Kinh dị">Kinh dị</button>
+        <button class="genre-button" data-genre="Lãng mạn">Lãng mạn</button>
+        <button class="genre-button" data-genre="Viễn tưởng">Viễn tưởng</button>
     </div>
 
-    <div class="movie-container">
-        <!-- Example Movie Card -->
-        <div class="movie-card">
-            <span class="rating">4.5/5</span>
-            <img src="path_to_movie_image.jpg" alt="Movie Title" class="movie-image">
-            
-        </div>
-
+    <div class="movie-container" id="movieContainer">
+        <!-- Danh sách phim sẽ được tải từ API -->
     </div>
+
+    <script src="movies-logic.js"></script>
 </body>
-<script src="movies-logic.js"></script>
 </html>
