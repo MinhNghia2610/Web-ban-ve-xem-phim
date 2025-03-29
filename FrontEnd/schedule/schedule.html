@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Schedule</title>
     <link rel="stylesheet" href="schedule.css">
-    
-    
 </head>
 <body>
     <nav class="navbar">
@@ -15,7 +13,6 @@
             <a href="index.html">Trang chủ</a>
             <a href="../movies/movie.html">Phim</a>
             <a href="../schedule/schedule.html">Suất Chiếu</a>
-            <a href="#about">Rạp</a>
             <div class="auth-buttons">
                 <a href="../auth/login.html"><button class="auth-btn login-btn">Đăng Nhập</button></a>
                 <a href="../auth/register.html"><button class="auth-btn register-btn">Đăng Ký</button></a>
@@ -24,36 +21,10 @@
     </nav>
     <main>
         <section class="schedule-section">
-            <h1>Our Schedule</h1>
-            <div class="schedule-container">
-                <div class="schedule-card" data-aos="fade-up">
-                    <h2>Monday - Friday</h2>
-                    <p>9:00 AM - 6:00 PM</p>
-                    <div class="movie-times">
-                        <span class="time">10:00</span>
-                        <span class="time">13:00</span>
-                        <span class="time">16:00</span>
-                        <span class="time">19:00</span>
-                    </div>
-                </div>
-                <div class="schedule-card" data-aos="fade-up" data-aos-delay="100">
-                    <h2>Saturday</h2>
-                    <p>10:00 AM - 4:00 PM</p>
-                    <div class="movie-times">
-                        <span class="time">11:00</span>
-                        <span class="time">14:00</span>
-                        <span class="time">17:00</span>
-                    </div>
-                </div>
-                <div class="schedule-card" data-aos="fade-up" data-aos-delay="200">
-                    <h2>Sunday</h2>
-                    <p>Closed</p>
-                    <div class="movie-times">
-                        <span class="time disabled">No Shows</span>
-                    </div>
-                </div>
+            <h1>Lịch Chiếu</h1>
+            <div class="schedule-container" id="scheduleContainer">
+                <!-- Dữ liệu suất chiếu sẽ được thêm vào đây từ API -->
             </div>
-            
         </section>
     </main>
     <footer>
@@ -76,16 +47,16 @@
             <div class="footer-section">
                 <h3>Quick Links</h3>
                 <ul>
-                    <li><a href="../index.html">Home</a></li>
-                    <li><a href="../about/about.html">About</a></li>
-                    <li><a href="../services/services.html">Services</a></li>
-                    <li><a href="schedule.html">Schedule</a></li>
-                    <li><a href="../contact/contact.html">Contact</a></li>
+                    <li><a href="../index.html">Trang chủ</a></li>
+                    <li><a href="../about/about.html">Giới thiệu</a></li>
+                    <li><a href="../services/services.html">Dịch vụ</a></li>
+                    <li><a href="schedule.html">Suất chiếu</a></li>
+                    <li><a href="../contact/contact.html">Liên hệ</a></li>
                 </ul>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2023 Your Company Name. All rights reserved.</p>
+            <p>&copy; 2025 FilmSpace. All rights reserved.</p>
         </div>
     </footer>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>

@@ -4,35 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thông tin người dùng</title>
-    <style>
-        body {
-            background-color: #121212;
-            color: white;
-            font-family: Arial, sans-serif;
-            text-align: center;
-            padding: 50px;
-        }
-        .container {
-            max-width: 400px;
-            margin: auto;
-            background: #1e1e1e;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
-        }
-        button {
-            background: #e50914;
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            cursor: pointer;
-            border-radius: 5px;
-            margin-top: 10px;
-        }
-        button:hover {
-            background: #b20710;
-        }
-    </style>
 </head>
 <body>
     <div class="container">
@@ -43,27 +14,6 @@
         <button onclick="logoutUser()">Đăng xuất</button>
         <button onclick="goToHomePage()">Trang Chủ</button>
     </div>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const storedUser = JSON.parse(localStorage.getItem("registeredUser") || "{}");
-            document.getElementById("username").innerText = storedUser.username || "Không có dữ liệu";
-            document.getElementById("email").innerText = storedUser.email || "Không có dữ liệu";
-            document.getElementById("phone").innerText = storedUser.phone || "Không có dữ liệu";
-            console.log("Dữ liệu lấy từ localStorage:", storedUser); // Kiểm tra dữ liệu có đúng không
-        });
-
-        function logoutUser() {
-            if (confirm("Bạn có chắc muốn đăng xuất?")) {
-                localStorage.removeItem("loggedInUser");
-                localStorage.removeItem("registeredUser");
-                window.location.href = "../home/index.html";
-            }
-        }
-        function goToHomePage() {
-            window.location.href = "../home/index.html";
-        }
-    </script>
 </body>
 </html>
 
