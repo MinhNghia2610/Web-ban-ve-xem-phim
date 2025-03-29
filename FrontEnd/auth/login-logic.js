@@ -18,47 +18,62 @@ function validateForm(event) {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(email)) {
             showError('Vui lòng nhập địa chỉ email hợp lệ.');
-            return false;
+            return;
         }
 
         // Kiểm tra số điện thoại (10 số)
         if (!phone.match(/^\d{10}$/)) {
             showError('Số điện thoại phải có 10 chữ số.');
-            return false;
+            return;
         }
 
         // Kiểm tra độ dài mật khẩu
         if (password.length < 8) {
             showError('Mật khẩu phải có ít nhất 8 ký tự.');
-            return false;
+            return;
         }
 
         // Kiểm tra xác nhận mật khẩu
         if (password !== confirmPassword) {
             showError('Mật khẩu không khớp.');
-            return false;
+            return;
         }
 
-        // Lưu thông tin vào localStorage (bao gồm cả mật khẩu)
-        localStorage.setItem('registeredUser', JSON.stringify({ username, email, phone, password }));
-
-        form.reset();
-        alert('Đăng ký thành công! Vui lòng đăng nhập.');
-        window.location.href = 'login.html';
+        // Gửi yêu cầu đăng ký đến API
+        fetch('/api/auth/register', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ username, email, phone, password })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert('Đăng ký thành công! Vui lòng đăng nhập.');
+                window.location.href = 'login.html';
+            } else {
+                showError(data.message);
+            }
+        })
+        .catch(() => showError('Lỗi kết nối đến server.'));
     } else {
         // Đăng nhập
-        const storedUser = JSON.parse(localStorage.getItem('registeredUser') || '{}');
-
-        if (username === storedUser.username && password === storedUser.password) {
-            console.log('Đăng nhập thành công:', username);
-            localStorage.setItem("loggedInUser", JSON.stringify(storedUser)); // Lưu toàn bộ thông tin user
-            form.reset();
-            alert('Đăng nhập thành công!');
-            updateUserStatus(); // Cập nhật trạng thái người dùng ngay lập tức
-            window.location.href = '../home/index.html';
-        } else {
-            showError('Tên đăng nhập hoặc mật khẩu không hợp lệ.');
-        }
+        fetch('/api/auth/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ username, password })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                localStorage.setItem("loggedInUser", JSON.stringify(data.user));
+                alert('Đăng nhập thành công!');
+                updateUserStatus();
+                window.location.href = '../home/index.html';
+            } else {
+                showError('Tên đăng nhập hoặc mật khẩu không hợp lệ.');
+            }
+        })
+        .catch(() => showError('Lỗi kết nối đến server.'));
     }
 }
 
